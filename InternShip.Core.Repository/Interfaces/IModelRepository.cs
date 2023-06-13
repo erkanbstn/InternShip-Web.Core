@@ -10,7 +10,7 @@ namespace InternShip.Core.Repository.Interfaces
         Task ChangeStatusAsync(T t);
         Task ChangeStatusAllAsync(List<T> t);
         Task UpdateAsync(T t);
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(int? id);
         Task<List<T>> ToListAsync();
         Task<List<T>> ToListByFilterAsync(Expression<Func<T, bool>> filter);
     }

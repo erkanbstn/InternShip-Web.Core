@@ -34,7 +34,7 @@ namespace InternShip.Core.Service.Managers
             await _lecturerRepository.DeleteAsync(t);
         }
 
-        public async Task<Lecturer> GetByIdAsync(int id)
+        public async Task<Lecturer> GetByIdAsync(int? id)
         {
             return await _lecturerRepository.GetByIdAsync(id);
         }

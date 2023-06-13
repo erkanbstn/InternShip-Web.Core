@@ -38,7 +38,7 @@ namespace InternShip.Core.Repository.DataAccess
             await _appDbContext.SaveChangesAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int? id)
         {
             return await _object.FindAsync(id);
         }

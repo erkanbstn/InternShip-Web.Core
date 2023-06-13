@@ -1,0 +1,17 @@
+﻿@model InternPlaceAddDto
+@{
+    ViewData["Title"] = "NewInternPlace";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<h1>New Intern Place</h1>
+<form method="post">
+    <span>Place</span>
+    <input asp-for="Place" placeholder="Text Place Here.." type="text" class="form-control" />
+    <br />
+    <span>Start Date</span>
+    <input asp-for="StartDate" type="date" class="form-control" />
+    <br />
+    <input type="submit" value="Save Changes" class="btn btn-info" />
+</form>

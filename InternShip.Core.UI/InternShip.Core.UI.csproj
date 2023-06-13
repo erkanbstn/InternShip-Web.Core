@@ -7,9 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Student\Data\" />
-    <Folder Include="Areas\Student\Models\" />
-    <Folder Include="ViewComponents\" />
+    <Compile Remove="Areas\Student\Data\**" />
+    <Compile Remove="Areas\Student\Models\**" />
+    <Compile Remove="ViewComponents\**" />
+    <Content Remove="Areas\Student\Data\**" />
+    <Content Remove="Areas\Student\Models\**" />
+    <Content Remove="ViewComponents\**" />
+    <EmbeddedResource Remove="Areas\Student\Data\**" />
+    <EmbeddedResource Remove="Areas\Student\Models\**" />
+    <EmbeddedResource Remove="ViewComponents\**" />
+    <None Remove="Areas\Student\Data\**" />
+    <None Remove="Areas\Student\Models\**" />
+    <None Remove="ViewComponents\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\UILayoutPartials\" />
   </ItemGroup>

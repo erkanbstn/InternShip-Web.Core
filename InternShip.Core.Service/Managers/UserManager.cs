@@ -13,7 +13,7 @@ namespace InternShip.Core.Service.Managers
         public UserManager(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _random= new Random();
+            _random = new Random();
         }
 
         public async Task ChangeStatusAllAsync(List<User> t)
@@ -36,7 +36,7 @@ namespace InternShip.Core.Service.Managers
             await _userRepository.DeleteAsync(t);
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(int? id)
         {
             return await _userRepository.GetByIdAsync(id);
         }
@@ -77,7 +77,7 @@ namespace InternShip.Core.Service.Managers
 
         public async Task<User> GetByNoAsync(string no)
         {
-             return await _userRepository.GetByNoAsync(no);
+            return await _userRepository.GetByNoAsync(no);
         }
     }
 }

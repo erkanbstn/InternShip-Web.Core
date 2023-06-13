@@ -1,0 +1,20 @@
+﻿@model InternBookEditDto
+@{
+    ViewData["Title"] = "EditInternBook";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<h1>Edit Intern Book</h1>
+<form method="post">
+    <input asp-for="Id" type="hidden" class="form-control" />
+    <span>Description</span>
+    <input asp-for="Description" placeholder="Text Description Here.." type="text" class="form-control" />
+    <br />
+    <span>Intern Day</span>
+    <input asp-for="InternDay" type="text" readonly class="form-control" />
+    <br />
+    <span>Intern Place</span>
+    <input asp-for="InternPlace.Place" type="text" class="form-control" />
+    <br />
+    <input type="submit" value="Save Changes" class="btn btn-info" />
+</form>

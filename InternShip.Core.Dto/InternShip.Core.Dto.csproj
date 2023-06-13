@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <Folder Include="Dtos\LecturerDto\" />
-    <Folder Include="Dtos\InternBookDto\" />
     <Folder Include="Dtos\MessageDto\" />
     <Folder Include="Dtos\RoleDto\" />
     <FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InternShip.Core.Core\InternShip.Core.Core.csproj" />
   </ItemGroup>
 
 </Project>

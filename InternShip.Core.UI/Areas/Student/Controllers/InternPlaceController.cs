@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using InternShip.Core.Dto.Dtos.InternBookDto;
 using InternShip.Core.Dto.Dtos.InternPlaceDto;
 using InternShip.Core.Service.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -6,13 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace InternShip.Core.UI.Areas.Student.Controllers
 {
     [Area("Student")]
-    public class InternController : Controller
+    public class InternPlaceController : Controller
     {
         private readonly IInternPlaceService _internPlaceService;
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
         private readonly IInternBookService _internBookService;
-        public InternController(IInternPlaceService internPlaceService, IMapper mapper, IUserService userService, IInternBookService internBookService)
+        public InternPlaceController(IInternPlaceService internPlaceService, IMapper mapper, IUserService userService, IInternBookService internBookService)
         {
             _internPlaceService = internPlaceService;
             _mapper = mapper;
@@ -50,11 +51,29 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
             }
             internPlace.Place = internPlaceEditDto.Place;
             await _internPlaceService.UpdateAsync(internPlace);
-            return Redirect("~/Student/Intern/MyInternPlaces");
+            return Redirect("~/Student/InternPlace/MyInternPlaces");
         }
-        public IActionResult DetailInternPlace(int id)
+        public async Task<IActionResult> DetailInternPlace(int id)
+        {
+            var books = _mapper.Map<List<InternBookListDto>>(await _internBookService.ToListByFilterAsync(x => x.InternPlaceId == id));
+            return View(books);
+        }
+        public IActionResult NewInternPlace()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> NewInternPlace(InternPlaceAddDto internPlaceAddDto)
+        {
+            var user = await _userService.GetByNoAsync(User.Identity.Name);
+            internPlaceAddDto.UserId = user.Id;
+            await _internPlaceService.InsertAsync(new()
+            {
+                Place = internPlaceAddDto.Place,
+                UserId = internPlaceAddDto.UserId,
+                StartDate = DateTime.Now,
+            });
+            return Redirect("~/Student/InternPlace/MyInternPlaces");
         }
     }
 }

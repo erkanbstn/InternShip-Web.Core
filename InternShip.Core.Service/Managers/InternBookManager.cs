@@ -39,7 +39,7 @@ namespace InternShip.Core.Service.Managers
             await _internBookRepository.DeleteAsync(t);
         }
 
-        public async Task<InternBook> GetByIdAsync(int id)
+        public async Task<InternBook> GetByIdAsync(int? id)
         {
             return await _internBookRepository.GetByIdAsync(id);
         }

@@ -34,7 +34,7 @@ namespace InternShip.Core.Service.Managers
             await _roleRepository.DeleteAsync(t);
         }
 
-        public async Task<Role> GetByIdAsync(int id)
+        public async Task<Role> GetByIdAsync(int? id)
         {
             return await _roleRepository.GetByIdAsync(id);
         }

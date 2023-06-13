@@ -1,0 +1,56 @@
+﻿@model List<InternBookListDto>
+@{
+    ViewData["Title"] = "MyInternBooks";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>My Intern Books</h6>
+                </div>
+
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <br>
+                        <a href="~/Student/InternBook/NewInternBook" class="btn btn-info ml-lg-5">Add New Intern Book</a>
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Intern Day</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var Boo in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">@Boo.Description</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">@Convert.ToDateTime(Boo.InternDay).ToString("dd/MM/yyyy")</p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="~/Student/InternBook/EditInternBook/@Boo.Id" class="text-secondary font-weight-bold text-xs">
+                                                Edit
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
