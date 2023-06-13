@@ -7,7 +7,6 @@ namespace InternShip.Core.Repository.DataAccess
     {
         public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : base(dbContextOptions)
         {
-            
         }
         
         public DbSet<User> Users { get; set; }

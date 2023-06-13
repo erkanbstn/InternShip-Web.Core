@@ -34,10 +34,23 @@ namespace InternShip.Core.UI.Areas.Admin.Controllers
             var internPlaces = _mapper.Map<List<InternPlaceListDto>>(await _internPlaceService.ToListByFilterAsync(x => x.UserId == id));
             return View(internPlaces);
         }
-        public async Task<IActionResult> InternBookDetail(int id)
+        [HttpGet("~/Admin/Intern/InternBookDetail/{id}/{userid}")]
+        public async Task<IActionResult> InternBookDetail(int id, int userid)
         {
-            var internBook = _mapper.Map<List<InternBookListDto>>(await _internBookService.ToListByFilterAsync(x => x.InternPlaceId == id && x.UserId == 1));
+            var internBook = _mapper.Map<List<InternBookListDto>>(await _internBookService.ToListByFilterAsync(x => x.InternPlaceId == id && x.UserId == userid));
             return View(internBook);
+        }
+        public async Task<IActionResult> InternBookDetailDetail(int id)
+        {
+            var internBook = await _internBookService.GetByIdAsync(id);
+            return View(new InternBookListDto()
+            {
+                Id = internBook.Id,
+                Description = internBook.Description,
+                InternDay = internBook.InternDay,
+                InternPlaceId = internBook.InternPlaceId,
+                UserId = internBook.UserId
+            });
         }
     }
 }

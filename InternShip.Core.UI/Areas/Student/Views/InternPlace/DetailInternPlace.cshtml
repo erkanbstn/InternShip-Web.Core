@@ -34,7 +34,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">@Boo.Description</h6>
+                                                    <h6 class="mb-0 text-sm">@(Boo.Description.Length > 20 ? Boo.Description.Substring(0, Boo.Description.Substring(0, 20).LastIndexOf(" ")) + "..." : Boo.Description + "...")</h6>
                                                 </div>
                                             </div>
                                         </td>

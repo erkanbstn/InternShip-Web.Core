@@ -40,7 +40,7 @@ namespace InternShip.Core.UI.Extensions
             services.AddControllersWithViews();
 
             // Auto Mapper
-
+            
             services.AddAutoMapper(typeof(Program));
 
             // Configure Interfaces Dependencies
@@ -54,7 +54,9 @@ namespace InternShip.Core.UI.Extensions
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserManager>();
 
-            services.AddScoped<IMessageRepository, MessageRepository>();
+			// IMessageRepository => MessageRepository
+			// IMessageService => MessageManager
+			services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IMessageService, MessageManager>();
 
             services.AddScoped<ILecturerRepository, LecturerRepository>();
@@ -76,7 +78,7 @@ namespace InternShip.Core.UI.Extensions
             // Error Page Configuration
 
             app.UseStatusCodePages();
-            app.UseStatusCodePagesWithReExecute("/Main/Error", "?code={0}");
+            app.UseStatusCodePagesWithReExecute("/Auth/Error", "?code={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

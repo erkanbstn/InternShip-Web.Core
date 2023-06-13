@@ -8,7 +8,7 @@
 <form method="post">
     <input asp-for="Id" type="hidden" class="form-control" />
     <span>Description</span>
-    <input asp-for="Description" placeholder="Text Description Here.." type="text" class="form-control" />
+    <textarea asp-for="Description" placeholder="Text Description Here.." cols="5" rows="5" class="form-control"></textarea>
     <br />
     <span>Intern Day</span>
     <input asp-for="InternDay" type="text" readonly class="form-control" />

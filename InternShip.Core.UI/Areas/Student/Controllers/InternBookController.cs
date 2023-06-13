@@ -32,7 +32,8 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
         }
         public async Task<IActionResult> EditInternBook(int id)
         {
-            ViewBag.places = (from c in await _internPlaceService.ToListAsync() select new SelectListItem { Text = c.Place, Value = c.Id.ToString() }).ToList();
+            var user = await _userService.GetByNoAsync(User.Identity.Name);
+            ViewBag.places = (from c in await _internPlaceService.ToListByFilterAsync(x => x.UserId == user.Id) select new SelectListItem { Text = c.Place, Value = c.Id.ToString() }).ToList();
             var internBook = await _internBookService.GetByIdAsync(id);
             return View(new InternBookEditDto()
             {
@@ -56,7 +57,8 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
         }
         public async Task<IActionResult> NewInternBook()
         {
-            ViewBag.places = (from c in await _internPlaceService.ToListAsync() select new SelectListItem { Text = c.Place, Value = c.Id.ToString() }).ToList();
+            var user = await _userService.GetByNoAsync(User.Identity.Name);
+            ViewBag.places = (from c in await _internPlaceService.ToListByFilterAsync(x=>x.UserId==user.Id) select new SelectListItem { Text = c.Place, Value = c.Id.ToString() }).ToList();
             return View();
         }
         [HttpPost]

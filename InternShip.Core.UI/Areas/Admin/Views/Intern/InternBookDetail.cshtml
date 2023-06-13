@@ -19,6 +19,7 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Intern Day</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,12 +29,17 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">@Boo.Description</h6>
+                                                    <h6 class="mb-0 text-sm">@(Boo.Description.Length > 20 ? Boo.Description.Substring(0, Boo.Description.Substring(0, 20).LastIndexOf(" ")) + "..." : Boo.Description + "...")</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <p class="text-xs font-weight-bold mb-0">@Convert.ToDateTime(Boo.InternDay).ToString("dd/MM/yyyy")</p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="~/Admin/Intern/InternBookDetailDetail/@Boo.Id" class="text-secondary font-weight-bold text-xs">
+                                                Detail
+                                            </a>
                                         </td>
                                     </tr>
                                 }
