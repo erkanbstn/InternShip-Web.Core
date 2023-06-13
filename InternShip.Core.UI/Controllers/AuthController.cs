@@ -37,7 +37,7 @@ namespace InternShip.Core.UI.Controllers
             });
             if (lecturer == null)
             {
-                ViewBag.failure = "No or Password Incorrect!";
+                ViewBag.failure = "UserName or Password Incorrect!";
                 return View();
             }
             await HttpContext.SignInAsync(await _lecturerService.SignInWithClaimAsync(lecturer));
