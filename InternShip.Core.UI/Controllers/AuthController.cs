@@ -1,4 +1,5 @@
 ﻿using InternShip.Core.Core.Models;
+using InternShip.Core.Dto.Dtos.LecturerDto;
 using InternShip.Core.Dto.Dtos.UserDto;
 using InternShip.Core.Service.Services;
 using InternShip.Core.UI.Areas.Student.Controllers;
@@ -12,10 +13,35 @@ namespace InternShip.Core.UI.Controllers
     public class AuthController : Controller
     {
         private readonly IUserService _userService;
-
-        public AuthController(IUserService userService)
+        private readonly ILecturerService _lecturerService;
+        public AuthController(IUserService userService, ILecturerService lecturerService)
         {
             _userService = userService;
+            _lecturerService = lecturerService;
+        }
+        public IActionResult ChooseUser()
+        {
+            return View();
+        }
+        public IActionResult SignInLecturer()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> SignInLecturer(LecturerLoginDto lecturerLoginDto)
+        {
+            var lecturer = await _lecturerService.LoginAsync(new()
+            {
+                UserName = lecturerLoginDto.UserName,
+                Password = lecturerLoginDto.Password
+            });
+            if (lecturer == null)
+            {
+                ViewBag.failure = "No or Password Incorrect!";
+                return View();
+            }
+            await HttpContext.SignInAsync(await _lecturerService.SignInWithClaimAsync(lecturer));
+            return Redirect("~/Admin/Intern/InternShip");
         }
         public IActionResult SignUp()
         {
@@ -31,7 +57,6 @@ namespace InternShip.Core.UI.Controllers
                 Name = userRegisterDto.Name,
                 Surname = userRegisterDto.Surname,
                 Password = userRegisterDto.Password,
-                RoleId = 2
             });
             return RedirectToAction(nameof(SignIn));
         }

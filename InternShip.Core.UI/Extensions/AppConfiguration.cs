@@ -35,7 +35,7 @@ namespace InternShip.Core.UI.Extensions
             });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(x => { x.LoginPath = "/Auth/SignIn"; });
+            .AddCookie(x => { x.LoginPath = "/Auth/ChooseUser"; });
 
             services.AddControllersWithViews();
 
@@ -53,9 +53,6 @@ namespace InternShip.Core.UI.Extensions
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserManager>();
-
-            services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IRoleService, RoleManager>();
 
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IMessageService, MessageManager>();
@@ -89,7 +86,7 @@ namespace InternShip.Core.UI.Extensions
             // Default Controllers
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Auth}/{action=SignIn}/{id?}");
+                pattern: "{controller=Auth}/{action=ChooseUser}/{id?}");
 
             // Area Controllers
             app.MapControllerRoute(

@@ -1,0 +1,29 @@
+﻿@model MessageAddDto
+@{
+    ViewData["Title"] = "NewMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>New Message</h1>
+<form method="post">
+    <span>Title</span>
+    <input asp-for="Title" placeholder="Text Title Here.." type="text" class="form-control" />
+    <br />
+    <span>Content</span>
+    <textarea asp-for="Content" placeholder="Text Content Here.." class="form-control" cols="5" rows="5"></textarea>
+    <br />
+    <span>Intern</span>
+    @if (ViewBag.User != null)
+    {
+        <input value="@ViewBag.User" readonly class="form-control" type="text" />
+        <input asp-for="UserId" class="form-control" type="hidden" />
+    }
+    else
+    {
+        @Html.DropDownListFor(x=>x.UserId,(List<SelectListItem>)ViewBag.users,"Choose Intern",new {@class="form-control"})
+    }
+    <br />
+    <input type="submit" value="Save Changes" class="btn btn-info" />
+</form>
+

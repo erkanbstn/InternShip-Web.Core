@@ -1,0 +1,19 @@
+﻿@model MessageListDto
+
+@{
+    ViewData["Title"] = "DetailMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Detail Message</h1>
+<form method="post">
+    <span>Title</span>
+    <input asp-for="Title" placeholder="Text Title Here.." type="text" class="form-control" />
+    <br />
+    <span>Date</span>
+    <input asp-for="Date" readonly type="text" class="form-control" />
+    <br />
+    <span>Content</span>
+    <textarea asp-for="Content" placeholder="Text Content Here.." class="form-control" cols="5" rows="5"></textarea>
+</form>
+

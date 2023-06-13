@@ -13,7 +13,6 @@ namespace InternShip.Core.Repository.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<InternBook> InternBooks { get; set; }
         public DbSet<InternPlace> InternPlaces { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<Message> Messages { get; set; }
     }

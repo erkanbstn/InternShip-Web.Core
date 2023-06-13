@@ -21,24 +21,16 @@ namespace InternShip.Core.Repository.Initialize
 
         public void Run()
         {
-            if(!(_context.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
+            if (!(_context.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
             {
                 _context.Database.EnsureDeleted();
                 _context.Database.EnsureCreated();
-                _context.Roles.Add(new()
-                {
-                    Name = "Lecturer"
-                });
-                _context.Roles.Add(new()
-                {
-                    Name = "Student"
-                });
-                _context.SaveChanges();
                 _context.Lecturers.Add(new()
                 {
-                    Name = "Test Lecturer",
-                    Surname= "Test Lecturer",
-                    RoleId=1,
+                    Name = "Admin",
+                    Surname = "Lecturer",
+                    Password = "123",
+                    UserName = "admin"
                 });
                 _context.SaveChanges();
             }

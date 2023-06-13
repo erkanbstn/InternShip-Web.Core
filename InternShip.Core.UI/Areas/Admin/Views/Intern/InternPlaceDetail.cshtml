@@ -1,0 +1,71 @@
+﻿@model List<InternPlaceListDto>
+@{
+    ViewData["Title"] = "InternPlaceDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Intern Place Detail</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Place</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Start Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">End Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var Pla in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">@Pla.Place</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">@Convert.ToDateTime(Pla.StartDate).ToString("dd/MM/yyyy")</p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            @if (@Convert.ToDateTime(Pla.EndDate).ToString("dd/MM/yyyy") != "01.01.0001")
+                                            {
+                                                <p class="text-xs font-weight-bold mb-0">@Convert.ToDateTime(Pla.EndDate).ToString("dd/MM/yyyy")</p>
+                                            }
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            @if (Pla.Status)
+                                            {
+                                                <span class="badge bg-gradient-success">Staj Devam Ediyor</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-gradient-danger">Staj Bitti</span>
+                                            }
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="~/Admin/Intern/InternBookDetail/@Pla.Id" class="text-secondary font-weight-bold text-xs">
+                                                Intern Books Detail
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,8 +8,6 @@
         public string No { get; set; }
         public string Branch { get; set; }
         public string Password { get; set; }
-        public int? RoleId { get; set; }
-        public virtual Role Role { get; set; }
         public ICollection<InternBook> InternBooks { get; set; }
         public ICollection<InternPlace> InternShips { get; set; }
     }

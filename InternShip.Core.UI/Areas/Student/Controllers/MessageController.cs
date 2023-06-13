@@ -39,7 +39,7 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
                     Name = lecturer.Name,
                     Surname = lecturer.Surname,
                     Id = lecturer.Id,
-                    Count = _appDbContext.Messages.Where(x => x.UserId == 1 && x.LecturerId == item).Count()
+                    Count = _messageService.GetMessageCountByLecturer(user.Id, item)
                 });
             }
             return View(messageLecturerListDtos);
@@ -49,7 +49,7 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
             if (id > 0)
             {
                 var lecturer = await _lecturerService.GetByIdAsync(id);
-                ViewBag.lecturer = $"{lecturer.Name} {lecturer.Surname}";
+                ViewBag.Lecturer = $"{lecturer.Name} {lecturer.Surname}";
                 return View(new MessageAddDto()
                 {
                     LecturerId = lecturer.Id,
@@ -82,11 +82,11 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
             var message = await _messageService.GetByIdAsync(id);
             return View(new MessageListDto()
             {
-                Content= message.Content,
-                Date=message.Date,
-                Id=message.Id,
-                LecturerId=message.LecturerId,
-                Title=message.Title,
+                Content = message.Content,
+                Date = message.Date,
+                Id = message.Id,
+                LecturerId = message.LecturerId,
+                Title = message.Title,
                 UserId = message.UserId
             });
         }

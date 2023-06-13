@@ -1,0 +1,31 @@
+﻿@model LecturerEditDto
+
+@{
+    ViewData["Title"] = "MyProfile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>My Profile</h1>
+<form method="post">
+    <input asp-for="Id" type="hidden" />
+    <span>UserName</span>
+    <input asp-for="UserName" readonly type="text" class="form-control" />
+    <br />
+    <span>Name</span>
+    <input asp-for="Name" placeholder="Text Name Here.." type="text" class="form-control" />
+    <br />
+    <span>Surname</span>
+    <input asp-for="Surname" placeholder="Text Surname Here.." type="text" class="form-control" />
+    <br />
+    <span>Password</span>
+    <input asp-for="Password" type="text" class="form-control" />
+    <br />
+    <input type="submit" value="Save Changes" class="btn btn-info" />
+</form>
+<br />
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}

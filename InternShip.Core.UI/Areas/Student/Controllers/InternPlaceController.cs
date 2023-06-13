@@ -57,7 +57,8 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
         }
         public async Task<IActionResult> DetailInternPlace(int id)
         {
-            var books = _mapper.Map<List<InternBookListDto>>(await _internBookService.ToListByFilterAsync(x => x.InternPlaceId == id));
+            var user = _userService.GetByNoAsync(User.Identity.Name);
+            var books = _mapper.Map<List<InternBookListDto>>(await _internBookService.ToListByFilterAsync(x => x.InternPlaceId == id && x.UserId == user.Id));
             return View(books);
         }
         public IActionResult NewInternPlace()

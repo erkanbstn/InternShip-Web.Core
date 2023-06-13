@@ -2,6 +2,7 @@
 using InternShip.Core.Repository.Interfaces;
 using InternShip.Core.Service.Services;
 using System.Linq.Expressions;
+using System.Security.Claims;
 
 namespace InternShip.Core.Service.Managers
 {
@@ -43,6 +44,19 @@ namespace InternShip.Core.Service.Managers
         {
             await _lecturerRepository.InsertAsync(t);
         }
+        public async Task<ClaimsPrincipal> SignInWithClaimAsync(Lecturer t)
+        {
+            var user = await LoginAsync(t);
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.UserName) };
+            var userIdentity = new ClaimsIdentity(claims, "SignInLecturer");
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
+            //HttpContext.Session.SetString("UserMail", x.WriterMail);
+            return claimsPrincipal;
+        }
+        public async Task<Lecturer> LoginAsync(Lecturer lecturer)
+        {
+            return await _lecturerRepository.LoginAsync(lecturer);
+        }
 
         public async Task<List<Lecturer>> ToListAsync()
         {
@@ -57,6 +71,11 @@ namespace InternShip.Core.Service.Managers
         public async Task UpdateAsync(Lecturer t)
         {
             await _lecturerRepository.UpdateAsync(t);
+        }
+
+        public async Task<Lecturer> GetByUserName(string userName)
+        {
+            return await _lecturerRepository.GetByUserName(userName);
         }
     }
 }
