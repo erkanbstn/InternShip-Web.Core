@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using InternShip.Core.Dto.Dtos.MessageDto;
-using InternShip.Core.Repository.DataAccess;
 using InternShip.Core.Service.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,4 @@
 ﻿using InternShip.Core.Dto.Dtos.LecturerDto;
-using InternShip.Core.Dto.Dtos.UserDto;
 using InternShip.Core.Service.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

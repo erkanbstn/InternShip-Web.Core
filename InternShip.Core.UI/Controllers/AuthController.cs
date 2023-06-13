@@ -1,15 +1,13 @@
-﻿using InternShip.Core.Core.Models;
-using InternShip.Core.Dto.Dtos.LecturerDto;
+﻿using InternShip.Core.Dto.Dtos.LecturerDto;
 using InternShip.Core.Dto.Dtos.UserDto;
 using InternShip.Core.Service.Services;
-using InternShip.Core.UI.Areas.Student.Controllers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InternShip.Core.UI.Controllers
 {
-	[AllowAnonymous]
+    [AllowAnonymous]
 	public class AuthController : Controller
 	{
 		private readonly IUserService _userService;

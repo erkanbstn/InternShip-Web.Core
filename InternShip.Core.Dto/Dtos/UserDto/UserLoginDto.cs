@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InternShip.Core.Dto.Dtos.UserDto
+﻿namespace InternShip.Core.Dto.Dtos.UserDto
 {
     public class UserLoginDto
     {

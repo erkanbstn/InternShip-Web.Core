@@ -1,12 +1,7 @@
 ﻿using InternShip.Core.Core.Models;
 using InternShip.Core.Repository.Interfaces;
 using InternShip.Core.Service.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InternShip.Core.Service.Managers
 {

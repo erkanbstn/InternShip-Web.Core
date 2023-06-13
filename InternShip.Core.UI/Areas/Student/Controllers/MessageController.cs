@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using InternShip.Core.Dto.Dtos.MessageDto;
-using InternShip.Core.Repository.DataAccess;
 using InternShip.Core.Service.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,14 +11,12 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
     [Authorize]
     public class MessageController : Controller
     {
-        private readonly AppDbContext _appDbContext;
         private readonly IUserService _userService;
         private readonly IMessageService _messageService;
         private readonly ILecturerService _lecturerService;
         private readonly IMapper _mapper;
-        public MessageController(AppDbContext appDbContext, IUserService userService, IMessageService messageService, ILecturerService lecturerService, IMapper mapper)
+        public MessageController(IUserService userService, IMessageService messageService, ILecturerService lecturerService, IMapper mapper)
         {
-            _appDbContext = appDbContext;
             _userService = userService;
             _messageService = messageService;
             _lecturerService = lecturerService;

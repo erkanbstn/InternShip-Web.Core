@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using InternShip.Core.Core.Models;
 using InternShip.Core.Dto.Dtos.InternBookDto;
 using InternShip.Core.Service.Services;
 using Microsoft.AspNetCore.Authorization;
