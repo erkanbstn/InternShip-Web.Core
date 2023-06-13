@@ -2,11 +2,14 @@
 using InternShip.Core.Core.Models;
 using InternShip.Core.Dto.Dtos.InternBookDto;
 using InternShip.Core.Service.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InternShip.Core.UI.Areas.Student.Controllers
 {
     [Area("Student")]
+    [Authorize]
     public class InternBookController : Controller
     {
         private readonly IInternBookService _internBookService;
@@ -29,11 +32,12 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
         }
         public async Task<IActionResult> EditInternBook(int id)
         {
+            ViewBag.places = (from c in await _internPlaceService.ToListAsync() select new SelectListItem { Text = c.Place, Value = c.Id.ToString() }).ToList();
             var internBook = await _internBookService.GetByIdAsync(id);
             return View(new InternBookEditDto()
             {
                 Id = internBook.Id,
-                InternPlace = await _internPlaceService.GetByIdAsync(internBook.InternPlaceId),
+                InternPlaceId = internBook.InternPlaceId,
                 UserId = internBook.UserId,
                 Description = internBook.Description,
                 InternDay = internBook.InternDay,
@@ -50,8 +54,9 @@ namespace InternShip.Core.UI.Areas.Student.Controllers
             await _internBookService.UpdateAsync(internBook);
             return Redirect("~/Student/InternBook/MyInternBooks");
         }
-        public IActionResult NewInternBook()
+        public async Task<IActionResult> NewInternBook()
         {
+            ViewBag.places = (from c in await _internPlaceService.ToListAsync() select new SelectListItem { Text = c.Place, Value = c.Id.ToString() }).ToList();
             return View();
         }
         [HttpPost]

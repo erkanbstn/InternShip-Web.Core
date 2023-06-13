@@ -2,11 +2,13 @@
 using InternShip.Core.Dto.Dtos.InternBookDto;
 using InternShip.Core.Dto.Dtos.InternPlaceDto;
 using InternShip.Core.Service.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InternShip.Core.UI.Areas.Student.Controllers
 {
     [Area("Student")]
+    [Authorize]
     public class InternPlaceController : Controller
     {
         private readonly IInternPlaceService _internPlaceService;

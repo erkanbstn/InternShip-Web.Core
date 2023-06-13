@@ -53,7 +53,7 @@ namespace InternShip.Core.UI.Controllers
                 return View();
             }
             await HttpContext.SignInAsync(await _userService.SignInWithClaimAsync(user));
-            return Redirect("~/Student/Intern/MyInternPlaces");
+            return Redirect("~/Student/InternPlace/MyInternPlaces");
         }
         public async Task<IActionResult> SignOut()
         {

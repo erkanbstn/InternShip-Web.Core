@@ -39,6 +39,11 @@ namespace InternShip.Core.Service.Managers
             return await _messageRepository.GetByIdAsync(id);
         }
 
+        public async Task<List<int?>> GetMessageLecturerById(int userId)
+        {
+            return await _messageRepository.GetMessageLecturerById(userId);
+        }
+
         public async Task InsertAsync(Message t)
         {
             await _messageRepository.InsertAsync(t);

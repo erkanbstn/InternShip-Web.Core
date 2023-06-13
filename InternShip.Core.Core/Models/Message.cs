@@ -4,7 +4,7 @@
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime? Date { get; set; }
+        public DateTime? Date { get; set; } = DateTime.Now;
         public int? LecturerId { get; set; }
         public virtual Lecturer Lecturer { get; set; }
         public int? UserId { get; set; }

@@ -14,7 +14,7 @@
     <input asp-for="InternDay" type="text" readonly class="form-control" />
     <br />
     <span>Intern Place</span>
-    <input asp-for="InternPlace.Place" type="text" class="form-control" />
+    @Html.DropDownListFor(x=>x.InternPlaceId,(List<SelectListItem>)ViewBag.places,"Choose Place",new {@class="form-control"})
     <br />
     <input type="submit" value="Save Changes" class="btn btn-info" />
 </form>

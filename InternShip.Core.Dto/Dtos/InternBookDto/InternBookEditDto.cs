@@ -14,6 +14,5 @@ namespace InternShip.Core.Dto.Dtos.InternBookDto
         public DateTime? InternDay { get; set; }
         public int? UserId { get; set; }
         public int? InternPlaceId { get; set; }
-        public InternPlace InternPlace { get; set; }
     }
 }
